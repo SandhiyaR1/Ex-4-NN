@@ -1,9 +1,4 @@
-
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
-<H3>EX. NO.4</H3>
-<H3>DATE:</H3>
-<H1 ALIGN =CENTER>Implementation of MLP with Backpropagation for Multiclassification</H1>
+<H1>EX. NO.4 Implementation of MLP with Backpropagation for Multiclassification</H1>
 <H3>Aim:</H3>
 To implement a Multilayer Perceptron for Multi classification
 <H3>Theory</H3>
@@ -117,6 +112,12 @@ Normalize our dataset.
 <H3>Program:</H3> 
 
 ```
+Developed by: SANDHIYA R
+
+Register number : 212222230129
+```
+
+```python
 import pandas as pd
 import sklearn
 from sklearn import preprocessing
@@ -128,21 +129,21 @@ from sklearn.metrics import classification_report, confusion_matrix
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class']
 irisdata = pd.read_csv(url, names=names)
-# Takes first 4 columns and assign them to variable "X"
+#Takes first 4 columns and assign them to variable "X"
 X = irisdata.iloc[:, 0:4]
-# Takes first 5th columns and assign them to variable "Y". Object dtype refers to strings.
+#Takes first 5th columns and assign them to variable "Y". Object dtype refers to strings.
 y = irisdata.select_dtypes(include=[object])
 X.head()
 y.head()
-# y actually contains all categories or classes:
+#y actually contains all categories or classes:
 y.Class.unique()
-# Now transforming categorial into numerical values
+#Now transforming categorial into numerical values
 le = preprocessing.LabelEncoder()
 y = y.apply(le.fit_transform)
 y.head()
-# Now for train and test split (80% of  dataset into  training set and  other 20% into test data)
+#Now for train and test split (80% of  dataset into  training set and  other 20% into test data)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)
-# Feature scaling
+#Feature scaling
 scaler = StandardScaler()
 scaler.fit(X_train)
 X_train = scaler.transform(X_train)
@@ -151,12 +152,11 @@ mlp = MLPClassifier(hidden_layer_sizes=(10, 10, 10), max_iter=1000)
 mlp.fit(X_train, y_train.values.ravel())
 predictions = mlp.predict(X_test)
 print(predictions)
-# Last thing: evaluation of algorithm performance in classifying flowers
+#Last thing: evaluation of algorithm performance in classifying flowers
 print(confusion_matrix(y_test,predictions))
 print(classification_report(y_test,predictions))
-
-
-
+```
+```python
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -180,10 +180,7 @@ m1.fit(training_a, training_b.values.ravel())
 predicted_values = m1.predict(testing_a)
 print(confusion_matrix(testing_b,predicted_values))
 print(classification_report(testing_b,predicted_values))
-
-
 ```
-
 <H3>Output:</H3>
 
 ![image](https://github.com/SandhiyaR1/Ex-4-NN/assets/113497571/f9759782-fdcb-4783-a6f7-1cb513a4cc46)
